@@ -1,0 +1,72 @@
+<div class="comments sqs-block">
+  <div class="comments-header">
+    <h3>Comments</h3>
+    <button type="button" class="btn btn-primary" onclick="toggleComment();">
+      VOTE/COMMENT
+    </button>
+  </div>
+
+  <div class="comments-filter">
+    <a href="#" class="active">All</a>
+    <% Object.keys(settings).forEach((option) => { %>
+    <a href="#"><%= option; %></a>
+    <% }); %>
+  </div>
+
+  <div class="comments-sort">
+    <a href="#" class="btn sm active">Best</a>
+    <a href="#" class="btn sm">Recent</a>
+  </div>
+
+  <!-- comments entry -->
+  <div class="comment-entry hide" id="comment-draft">
+    <form id="comment-form" name="comment-form">
+      <div class="user">
+        <img
+          class="avatar"
+          src="<%= profile.image %>"
+          alt="<%= profile.image %>"
+          data-type="image"
+        />
+        <label><%= profile.name %></label>
+      </div>
+      <input
+        type="text"
+        placeholder="Title"
+        class="input-text w100"
+        name="title"
+      />
+      <div class="type-wrap">
+        <select class="personality" name="personality">
+          <option>MBTI</option>
+          <% settings.MBTI.forEach((option) => { %>
+          <option value="<%= option; %>"><%= option; %></option>
+          <% }); %>
+        </select>
+        <select class="enneagram" name="enneagram">
+          <option>Enneagram</option>
+          <% settings.Enneagram.forEach((option) => { %>
+          <option value="<%= option; %>"><%= option; %></option>
+          <% }); %>
+        </select>
+        <select class="zodiac" name="zodiac">
+          <option>Zodiac</option>
+          <% settings.Zodiac.forEach((option) => { %>
+          <option value="<%= option; %>"><%= option; %></option>
+          <% }); %>
+        </select>
+      </div>
+      <textarea
+        name="comment"
+        class="input-text w100"
+        placeholder="Share your thoughts and ideas by commenting here"
+      ></textarea>
+      <button type="submit" class="material-icons btn-send" disabled>
+        send
+      </button>
+    </form>
+  </div>
+
+  <!-- comments list -->
+  <div class="comment-list"></div>
+</div>
